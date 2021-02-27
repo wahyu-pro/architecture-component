@@ -32,14 +32,14 @@ public class DetailActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        ViewModelFactory factory = ViewModelFactory.getInstance();
+        ViewModelFactory factory = ViewModelFactory.getInstance(this);
         DetailViewModel viewModel = new ViewModelProvider(this,
                 factory).get(DetailViewModel.class);
 
         Movie movie = (Movie) getIntent().getSerializableExtra(EXTRA_MOVIE);
         if (movie != null) {
             viewModel.setDetailView(movie);
-            setupDetail(viewModel.getDetailView());
+            viewModel.getDetailMovie().observe(this, this::setupDetail);
         }
 
     }

@@ -56,6 +56,7 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$junitExtversion"
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$espressoVersion"
     testImplementation "org.mockito:mockito-core:$mockitoVersion"
+    implementation "androidx.test.espresso:espresso-idling-resource:$idleResourceVersion"
     testImplementation "androidx.arch.core:core-testing:$androidCoreTestVersion"
 
     // gson

@@ -20,11 +20,11 @@ public class ViewModelFactory extends ViewModelProvider.NewInstanceFactory {
         movieRepository = academyRepository;
     }
 
-    public static ViewModelFactory getInstance() {
+    public static ViewModelFactory getInstance(Context context) {
         if (INSTANCE == null) {
             synchronized (ViewModelFactory.class) {
                 if (INSTANCE == null) {
-                    INSTANCE = new ViewModelFactory(Injection.provideRepository());
+                    INSTANCE = new ViewModelFactory(Injection.provideRepository(context));
                 }
             }
         }

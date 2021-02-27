@@ -10,5 +10,5 @@ public interface IMovieRepository {
 
     LiveData<List<Movie>> getMoviesShow();
     LiveData<List<Movie>> getTVShow();
-
+    LiveData<Movie> getMovie(Movie movie);
 }

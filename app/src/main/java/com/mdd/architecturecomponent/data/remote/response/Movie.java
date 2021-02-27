@@ -3,119 +3,84 @@ package com.mdd.architecturecomponent.data.remote.response;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
-import java.util.List;
 
 public class Movie implements Serializable {
 
-	@SerializedName("overview")
-	private String overview;
+    @SerializedName("overview")
+    private String overview;
 
-	@SerializedName("original_language")
-	private String originalLanguage;
+    @SerializedName("original_language")
+    private String originalLanguage;
 
-	@SerializedName("original_title")
-	private String originalTitle;
+    @SerializedName("title")
+    private String title;
 
-	@SerializedName("video")
-	private boolean video;
+    @SerializedName("poster_path")
+    private String posterPath;
 
-	@SerializedName("title")
-	private String title;
+    @SerializedName("backdrop_path")
+    private String backdropPath;
 
-	@SerializedName("genre_ids")
-	private List<Integer> genreIds;
+    @SerializedName("release_date")
+    private String releaseDate;
 
-	@SerializedName("poster_path")
-	private String posterPath;
+    @SerializedName("id")
+    private int id;
 
-	@SerializedName("backdrop_path")
-	private String backdropPath;
+    @SerializedName("name")
+    private String name;
 
-	@SerializedName("release_date")
-	private String releaseDate;
+    @SerializedName("first_air_date")
+    private String firstAirDate;
 
-	@SerializedName("popularity")
-	private double popularity;
+    public Movie() {
+    }
 
-	@SerializedName("vote_average")
-	private double voteAverage;
+    public Movie(String overview, String originalLanguage, String title, String posterPath, String backdropPath, String releaseDate, int id, String name, String firstAirDate) {
+        this.overview = overview;
+        this.originalLanguage = originalLanguage;
+        this.title = title;
+        this.posterPath = posterPath;
+        this.backdropPath = backdropPath;
+        this.releaseDate = releaseDate;
+        this.id = id;
+        this.name = name;
+        this.firstAirDate = firstAirDate;
+    }
 
-	@SerializedName("id")
-	private int id;
+    public String getFirstAirDate() {
+        return firstAirDate;
+    }
 
-	@SerializedName("adult")
-	private boolean adult;
+    public String getName() {
+        return name;
+    }
 
-	@SerializedName("vote_count")
-	private int voteCount;
+    public String getOverview() {
+        return overview;
+    }
 
-	@SerializedName("name")
-	private String name;
+    public String getOriginalLanguage() {
+        return originalLanguage;
+    }
 
-	@SerializedName("first_air_date")
-	private String firstAirDate;
+    public String getTitle() {
+        return title;
+    }
 
-	public String getFirstAirDate() {
-		return firstAirDate;
-	}
+    public String getPosterPath() {
+        return posterPath;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getBackdropPath() {
+        return backdropPath;
+    }
 
-	public String getOverview(){
-		return overview;
-	}
+    public String getReleaseDate() {
+        return releaseDate;
+    }
 
-	public String getOriginalLanguage(){
-		return originalLanguage;
-	}
-
-	public String getOriginalTitle(){
-		return originalTitle;
-	}
-
-	public boolean isVideo(){
-		return video;
-	}
-
-	public String getTitle(){
-		return title;
-	}
-
-	public List<Integer> getGenreIds(){
-		return genreIds;
-	}
-
-	public String getPosterPath(){
-		return posterPath;
-	}
-
-	public String getBackdropPath(){
-		return backdropPath;
-	}
-
-	public String getReleaseDate(){
-		return releaseDate;
-	}
-
-	public double getPopularity(){
-		return popularity;
-	}
-
-	public double getVoteAverage(){
-		return voteAverage;
-	}
-
-	public int getId(){
-		return id;
-	}
-
-	public boolean isAdult(){
-		return adult;
-	}
-
-	public int getVoteCount(){
-		return voteCount;
-	}
+    public int getId() {
+        return id;
+    }
 }

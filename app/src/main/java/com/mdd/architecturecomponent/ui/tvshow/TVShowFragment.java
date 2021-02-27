@@ -42,7 +42,7 @@ public class TVShowFragment extends Fragment implements ItemClickListener {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         if (getActivity() != null) {
-            ViewModelFactory factory = ViewModelFactory.getInstance();
+            ViewModelFactory factory = ViewModelFactory.getInstance(getActivity());
             TVShowViewModel viewModel =
                     new ViewModelProvider(this, factory).get(TVShowViewModel.class);
             TVShowAdapter adapter = new TVShowAdapter(getContext());

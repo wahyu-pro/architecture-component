@@ -41,7 +41,7 @@ public class MoviesFragment extends Fragment implements ItemClickListener {
         super.onViewCreated(view, savedInstanceState);
         if (getActivity() != null) {
 
-            ViewModelFactory factory = ViewModelFactory.getInstance();
+            ViewModelFactory factory = ViewModelFactory.getInstance(getActivity());
             MoviesViewModel viewModel =
                     new ViewModelProvider(this, factory).get(MoviesViewModel.class);
             MoviesAdapter adapter = new MoviesAdapter(getContext());
