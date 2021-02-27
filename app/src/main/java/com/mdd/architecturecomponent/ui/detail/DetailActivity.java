@@ -18,6 +18,7 @@ public class DetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_MOVIE = "extra_movie";
     ContentDetailBinding detailBinding;
+    private final int ROUNDED_CORNER = 20;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +50,7 @@ public class DetailActivity extends AppCompatActivity {
         String title = movie.getTitle() != null ? movie.getTitle() : movie.getName();
         Glide.with(this)
                 .load("https://image.tmdb.org/t/p/w500/" + movie.getBackdropPath())
-                .transform(new RoundedCorners(20))
+                .transform(new RoundedCorners(ROUNDED_CORNER))
                 .apply(RequestOptions.placeholderOf(R.drawable.ic_loading)
                         .error(R.drawable.ic_error))
                 .into(detailBinding.ivCover);
