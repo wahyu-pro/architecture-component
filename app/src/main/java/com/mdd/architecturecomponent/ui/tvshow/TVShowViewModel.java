@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel;
 
 import com.mdd.architecturecomponent.data.remote.response.Movie;
 import com.mdd.architecturecomponent.data.repository.MovieRepository;
-import com.mdd.architecturecomponent.utils.DataDummy;
 
 import java.util.List;
 

@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.mdd.architecturecomponent.data.di.Injection;
 import com.mdd.architecturecomponent.data.repository.MovieRepository;
 import com.mdd.architecturecomponent.ui.detail.DetailViewModel;
 import com.mdd.architecturecomponent.ui.movies.MoviesViewModel;

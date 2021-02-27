@@ -1,4 +1,4 @@
-package com.mdd.architecturecomponent.data;
+package com.mdd.architecturecomponent.data.di;
 
 import android.content.Context;
 
