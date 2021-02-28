@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -17,6 +18,8 @@ import com.mdd.architecturecomponent.data.ViewModelFactory;
 import com.mdd.architecturecomponent.data.remote.response.Movie;
 import com.mdd.architecturecomponent.databinding.FragmentMoviesBinding;
 import com.mdd.architecturecomponent.ui.detail.DetailActivity;
+
+import java.util.List;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
@@ -47,11 +50,20 @@ public class MoviesFragment extends Fragment implements ItemClickListener {
             MoviesAdapter adapter = new MoviesAdapter(getContext());
             fragmentMoviesBinding.progressBar.setVisibility(VISIBLE);
 
-            viewModel.getMovies().observe(this, movies -> {
-                fragmentMoviesBinding.progressBar.setVisibility(GONE);
-                adapter.setMovies(movies, MoviesFragment.this);
-                adapter.notifyDataSetChanged();
+            viewModel.getMovies().observe(this, new Observer<List<Movie>>() {
+                @Override
+                public void onChanged(List<Movie> movies) {
+                    fragmentMoviesBinding.progressBar.setVisibility(GONE);
+                    adapter.setMovies(movies, MoviesFragment.this);
+                    adapter.notifyDataSetChanged();
+                }
             });
+
+//            viewModel.getMovies().observe(this, movies -> {
+//                fragmentMoviesBinding.progressBar.setVisibility(GONE);
+//                adapter.setMovies(movies, MoviesFragment.this);
+//                adapter.notifyDataSetChanged();
+//            });
 
             fragmentMoviesBinding.rvMovie.setLayoutManager(new LinearLayoutManager(getContext()));
             fragmentMoviesBinding.rvMovie.setHasFixedSize(true);

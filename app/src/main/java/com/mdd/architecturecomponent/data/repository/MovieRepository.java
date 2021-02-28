@@ -9,13 +9,15 @@ import com.mdd.architecturecomponent.data.remote.response.Movie;
 
 import java.util.List;
 
-public class MovieRepository implements IMovieRepository{
+public class MovieRepository implements IMovieRepository {
 
     private volatile static MovieRepository INSTANCE = null;
     private final RemoteDataSource remoteDataSource;
+
     private MovieRepository(@NonNull RemoteDataSource remoteDataSource) {
         this.remoteDataSource = remoteDataSource;
     }
+
     public static MovieRepository getInstance(RemoteDataSource remoteData) {
         if (INSTANCE == null) {
             synchronized (MovieRepository.class) {
