@@ -1,12 +1,15 @@
 package com.mdd.architecturecomponent;
 
+import android.content.Context;
+
 import androidx.test.core.app.ActivityScenario;
 import androidx.test.espresso.IdlingRegistry;
 import androidx.test.espresso.contrib.RecyclerViewActions;
+import androidx.test.platform.app.InstrumentationRegistry;
 
 import com.mdd.architecturecomponent.data.remote.response.Movie;
 import com.mdd.architecturecomponent.ui.home.HomeActivity;
-import com.mdd.architecturecomponent.utils.DataDummy;
+import com.mdd.architecturecomponent.utils.DataRemote;
 import com.mdd.architecturecomponent.utils.EspressoIdlingResource;
 
 import org.junit.After;
@@ -24,7 +27,9 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 public class HomeActivityTest {
 
-    List<Movie> dataDummy = DataDummy.generateRemoteDummyMovies();
+    Context context = InstrumentationRegistry.getInstrumentation().getContext();
+    List<Movie> movieShow = DataRemote.getMovieShow(context);
+    List<Movie> tvShow = DataRemote.getTVShow(context);
 
     @Before
     public void setup(){
@@ -40,7 +45,7 @@ public class HomeActivityTest {
     @Test
     public void loadMovies() {
         onView(withId(R.id.rv_movie)).check(matches(isDisplayed()));
-        onView(withId(R.id.rv_movie)).perform(RecyclerViewActions.scrollToPosition(dataDummy.size()));
+        onView(withId(R.id.rv_movie)).perform(RecyclerViewActions.scrollToPosition(movieShow.size()));
     }
 
     @Test
@@ -51,13 +56,18 @@ public class HomeActivityTest {
         onView(withId(R.id.language)).check(matches(isDisplayed()));
         onView(withId(R.id.synopsis)).check(matches(isDisplayed()));
         onView(withId(R.id.year)).check(matches(isDisplayed()));
+
+        onView(withId(R.id.tv_title)).check(matches(withText(movieShow.get(0).getTitle())));
+        onView(withId(R.id.language)).check(matches(withText(movieShow.get(0).getOriginalLanguage().toUpperCase())));
+        onView(withId(R.id.synopsis)).check(matches(withText(movieShow.get(0).getOverview())));
+        onView(withId(R.id.year)).check(matches(withText(movieShow.get(0).getReleaseDate())));
     }
 
     @Test
     public void loadTvShow() {
         onView(withText("TV SHOW")).perform(click());
         onView(withId(R.id.rv_tvshow)).check(matches(isDisplayed()));
-        onView(withId(R.id.rv_tvshow)).perform(RecyclerViewActions.scrollToPosition(dataDummy.size()));
+        onView(withId(R.id.rv_tvshow)).perform(RecyclerViewActions.scrollToPosition(tvShow.size()));
     }
 
 
@@ -71,5 +81,9 @@ public class HomeActivityTest {
         onView(withId(R.id.synopsis)).check(matches(isDisplayed()));
         onView(withId(R.id.year)).check(matches(isDisplayed()));
 
+        onView(withId(R.id.tv_title)).check(matches(withText(tvShow.get(0).getName())));
+        onView(withId(R.id.language)).check(matches(withText(tvShow.get(0).getOriginalLanguage().toUpperCase())));
+        onView(withId(R.id.synopsis)).check(matches(withText(tvShow.get(0).getOverview())));
+        onView(withId(R.id.year)).check(matches(withText(tvShow.get(0).getFirstAirDate())));
     }
 }
